@@ -72,9 +72,9 @@ public class EsempioController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping
-    public ResponseEntity<EsempioDTO> aggiornaEsempio(@RequestBody EsempioDTO esemmpioDTO) {
-        Esempio esempio = esempioService.ottieniEsempioPerId(esemmpioDTO.getId());
+    @PutMapping("/{id}")
+    public ResponseEntity<EsempioDTO> aggiornaEsempio(@PathVariable Long id, @RequestBody EsempioDTO esemmpioDTO) {
+        Esempio esempio = esempioService.ottieniEsempioPerId(id);
         if (esempio == null) {
             return ResponseEntity.notFound().build();
         }
